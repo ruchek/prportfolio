@@ -410,7 +410,7 @@ body.is-menu-visible .menu-overlay {
   align-items: center;
   display: flex;
   padding: 6em 0 2em 0;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -425,6 +425,12 @@ body.is-menu-visible .menu-overlay {
   justify-content: center;
 }
 
+@media screen and (min-width: 981px) {
+  #banner {
+    background-attachment: fixed;
+  }
+}
+
 #banner:after {
   transition: opacity 2.5s ease;
   transition-delay: 0.75s;
@@ -434,7 +440,7 @@ body.is-menu-visible .menu-overlay {
   display: block;
   height: 100%;
   left: 0;
-  opacity: 0.85;
+  opacity: 0.75;
   position: absolute;
   top: 0;
   width: 100%;

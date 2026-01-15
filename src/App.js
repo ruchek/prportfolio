@@ -65,53 +65,8 @@ function App() {
   const isHomePage = location.pathname === '/';
 
   return (
-    <div id="wrapper">
-      <ScrollToTop />
-
-      {/* Header */}
-      <header
-        id="header"
-        className={`${isHomePage && !isScrolled ? 'alt' : ''} ${isScrolled ? 'reveal' : ''}`}
-      >
-        <Link to="/" className="logo">
-          <strong>Pooja Ravi</strong>
-        </Link>
-
-        <nav>
-          <div className="nav-links">
-            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
-              Home
-            </Link>
-            <Link to="/projects" className={location.pathname.startsWith('/projects') ? 'active' : ''}>
-              Projects
-            </Link>
-            <Link to="/resume" className={location.pathname === '/resume' ? 'active' : ''}>
-              Resume
-            </Link>
-            <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>
-              Contact
-            </Link>
-          </div>
-
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            <i className={`fas ${isDark ? 'fa-sun' : 'fa-moon'}`}></i>
-          </button>
-
-          <button
-            className="menu-toggle"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            <i className="fas fa-bars"></i>
-          </button>
-        </nav>
-      </header>
-
-      {/* Mobile Menu */}
+    <>
+      {/* Mobile Menu - Outside wrapper to avoid blur */}
       <nav id="menu">
         <button className="close" onClick={closeMenu} aria-label="Close menu">
           <i className="fas fa-times"></i>
@@ -140,10 +95,56 @@ function App() {
         </ul>
       </nav>
 
-      {/* Menu Overlay */}
+      {/* Menu Overlay - Outside wrapper to avoid blur */}
       <div className="menu-overlay" onClick={closeMenu}></div>
 
-      {/* Main Content */}
+      <div id="wrapper">
+        <ScrollToTop />
+
+        {/* Header */}
+        <header
+          id="header"
+          className={`${isHomePage && !isScrolled ? 'alt' : ''} ${isScrolled ? 'reveal' : ''}`}
+        >
+          <Link to="/" className="logo">
+            <strong>Pooja Ravi</strong>
+          </Link>
+
+          <nav>
+            <div className="nav-links">
+              <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+                Home
+              </Link>
+              <Link to="/projects" className={location.pathname.startsWith('/projects') ? 'active' : ''}>
+                Projects
+              </Link>
+              <Link to="/resume" className={location.pathname === '/resume' ? 'active' : ''}>
+                Resume
+              </Link>
+              <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>
+                Contact
+              </Link>
+            </div>
+
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              <i className={`fas ${isDark ? 'fa-sun' : 'fa-moon'}`}></i>
+            </button>
+
+            <button
+              className="menu-toggle"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              <i className="fas fa-bars"></i>
+            </button>
+          </nav>
+        </header>
+
+        {/* Main Content */}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
@@ -176,6 +177,7 @@ function App() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
 

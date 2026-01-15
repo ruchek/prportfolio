@@ -97,7 +97,7 @@ export default function Home() {
   return (
     <>
       {/* Banner Section */}
-      <section id="banner" className="major">
+      <section id="banner" className="major" style={{ backgroundImage: 'url(/images/banner.jpg)' }}>
         <div className="inner">
           {/* Profile Image */}
           <motion.div
