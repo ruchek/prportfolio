@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { useTheme } from './contexts/ThemeContext';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
+import Contact from './pages/Contact';
+import Resume from './pages/Resume';
+import './styles/main.css';
+import './styles/components.css';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -13,18 +20,11 @@ function ScrollToTop() {
 
   return null;
 }
-import Home from './pages/Home';
-import Projects from './pages/Projects';
-import ProjectDetail from './pages/ProjectDetail';
-import Contact from './pages/Contact';
-import Resume from './pages/Resume';
-import './styles/main.css';
-import './styles/components.css';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, toggleTheme, isDark } = useTheme();
+  const { toggleTheme, isDark } = useTheme();
   const location = useLocation();
 
   // Handle preload state
